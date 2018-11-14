@@ -18,7 +18,8 @@ constructor(props){
     <h1 >Binary Search</h1>
     <h3>can only search one number at a time</h3>
     <input type='text' ref={this.binaryInput}></input>
-    <button type= 'button' onClick={e=>console.log(this.binaryInput.current.value)}>
+    <button type= 'button' 
+    onClick={e=>this.props.handleBinaryClick(this.binaryInput.current.value)}>
     Binary Search
     </button> 
    

@@ -55,6 +55,8 @@ console.log(message);
 }
 
 
+
+
   render() {
   const data = this.state.data.map(number=>number+',');
 
@@ -92,6 +94,7 @@ console.log(message);
 
 
          <BinarySearch
+         handleBinaryClick={value=>console.log(value, 97)}
         // binarycount={this.state.binaryCount} 
         // binaryClick={e=>console.log('hello')}
         />
