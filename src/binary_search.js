@@ -11,7 +11,6 @@ constructor(props){
 
 
 
-
   render(){
   return(
     <section className='binarySearch'>

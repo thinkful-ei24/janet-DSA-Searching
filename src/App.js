@@ -35,33 +35,74 @@ handleDataInput(value){
 
 }
 
-handleLinearSearch(value, start, end){
+handleLinearSearch(value){
 const target = Number(value);
 this.setState({target: `${target}`});
 const arr = this.state.data;
-let message;
-let counter;
-
-console.log(target, 'target')
+let counter=0;
 for(let i =0; i<arr.length; i++ ){
+  counter ++;
   if(arr[i]===target){
-   message = `Found ${target}`;
-    counter = i +1;
-  this.setState({count: `${counter}`})
+    this.setState({linearCount: `${counter}`})
+    return;
   }
+  this.setState({linearCount: `${counter}`})
+};
 }
 
-console.log(message);
+
+
+ handleBinarySearch(value,arr,start, end, counter){
+  const target = Number(value);
+  const array = this.state.data;
+  const sortedArr = array.sort((a, b) => a - b);
+  this.setState({ binaryTarget: `${target}`});
+  arr= arr === undefined ? sortedArr: arr;
+  start = start === undefined ? 0 : start;
+  end = end === undefined ? arr.length - 1 : end;
+  counter = counter === undefined ? 0 : counter;
+
+
+
+
+    if (start>end) return 'nothing found';
+    let midIndex = Math.floor((start+end)/2)
+    console.log(midIndex, 'mid')
+    let startingPt = arr[midIndex];
+
+
+    if(target===startingPt){
+      counter +=1;
+      return midIndex;
+    }
+
+    else if(target < startingPt){
+      counter +=1
+      return this.handleBinarySearch(value, start, startingPt-1);
+    }
+
+    else if(target> startingPt){
+      counter +=1
+      return this.handleBinarySearch( value, startingPt+1, end);
+  
+  }
+
+ 
+  console.log(counter, 'counter');  
+  console.log(arr, 'array')
+
 }
+
+
 
 
 
 
   render() {
+
+
   const data = this.state.data.map(number=>number+',');
 
-  console.log(this.state.binaryTarget, 'binaryTarget');
-  // console.log(this.state.count);
     return (
       <section className="App">
 
@@ -83,7 +124,8 @@ console.log(message);
        <h3>can only search one number at a time</h3>
        <input type='text' ref={this.targetInput}></input>
        <button type= 'button' onClick = {(e)=>{
-         this.handleLinearSearch(this.targetInput.current.value);
+       
+         this.handleLinearSearch( this.targetInput.current.value);
 
          }}>
        Linear Search
@@ -94,14 +136,16 @@ console.log(message);
 
 
          <BinarySearch
-         handleBinaryClick={value=>this.setState({binaryTarget: Number(value)})}
-        // binarycount={this.state.binaryCount} 
-        // binaryClick={e=>console.log('hello')}
+         handleBinaryClick={value=>this.handleBinarySearch(Number(value))}
+        binarycount={this.state.binaryCount} 
+        binaryTarget = {this.state.binaryTarget}
         />
        
       </section>
     );
   }
 }
+
+
 
 export default App;
