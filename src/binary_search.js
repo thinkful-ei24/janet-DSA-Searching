@@ -22,7 +22,7 @@ constructor(props){
     Binary Search
     </button> 
    
-    <div>It took {this.props.binarycount} time(s) to find {this.props.binaryTarget}</div>
+    <div>{this.props.binaryMessage}</div>
     </section>
   );
   }

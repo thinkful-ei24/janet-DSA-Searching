@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import BinarySearch from './binary_search';
+import binarySearch from './binarySearchFunction';
 class App extends Component {
 constructor(props){
   super(props);
@@ -52,44 +53,13 @@ for(let i =0; i<arr.length; i++ ){
 
 
 
- handleBinarySearch(value,arr,start, end, counter){
-  const target = Number(value);
-  const array = this.state.data;
-  const sortedArr = array.sort((a, b) => a - b);
-  this.setState({ binaryTarget: `${target}`});
-  arr= arr === undefined ? sortedArr: arr;
-  start = start === undefined ? 0 : start;
-  end = end === undefined ? arr.length - 1 : end;
-  counter = counter === undefined ? 0 : counter;
+ handleBinarySearch(value){
+console.log(value, 'value'); 
+this.setState({binaryTarget:value})
+const array= this.state.data;
+const sortedArray = this.state.data.sort((a, b) => a - b);
 
-
-
-
-    if (start>end) return 'nothing found';
-    let midIndex = Math.floor((start+end)/2)
-    console.log(midIndex, 'mid')
-    let startingPt = arr[midIndex];
-
-
-    if(target===startingPt){
-      counter +=1;
-      return midIndex;
-    }
-
-    else if(target < startingPt){
-      counter +=1
-      return this.handleBinarySearch(value, start, startingPt-1);
-    }
-
-    else if(target> startingPt){
-      counter +=1
-      return this.handleBinarySearch( value, startingPt+1, end);
-  
-  }
-
- 
-  console.log(counter, 'counter');  
-  console.log(arr, 'array')
+this.setState({binaryCount: binarySearch(value, sortedArray)}); 
 
 }
 
@@ -99,9 +69,16 @@ for(let i =0; i<arr.length; i++ ){
 
 
   render() {
-
+console.log(this.state.binaryCount);
 
   const data = this.state.data.map(number=>number+',');
+  let  binaryMessage;
+
+    if(this.state.binaryCount.found===false){
+      binaryMessage=<div>Item Not Found after {this.state.binaryCount.counter} tries </div>
+    }else{
+      binaryMessage= <div>It took {this.state.binaryCount.counter} time(s) to find {this.state.binaryTarget}</div>
+    }
 
     return (
       <section className="App">
@@ -130,7 +107,7 @@ for(let i =0; i<arr.length; i++ ){
          }}>
        Linear Search
        </button>
-
+        
        <div>It took {this.state.linearCount} time(s) to find {this.state.target}</div>
        </section>
 
@@ -139,6 +116,7 @@ for(let i =0; i<arr.length; i++ ){
          handleBinaryClick={value=>this.handleBinarySearch(Number(value))}
         binarycount={this.state.binaryCount} 
         binaryTarget = {this.state.binaryTarget}
+        binaryMessage={binaryMessage}
         />
        
       </section>
