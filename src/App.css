@@ -33,7 +33,10 @@ section{
   marin: 0 auto;
   height: 100px;
   overflow-y : scroll;
+}
 
+.bookTitle{
+  margin-top: 10px;
 }
 @keyframes App-logo-spin {
   from {
