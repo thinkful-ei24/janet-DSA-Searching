@@ -5,13 +5,16 @@ import './App.css';
 class App extends Component {
 constructor(props){
   super(props);
-  this.input = React.createRef();
+  this.targetInput = React.createRef();
+  this.dataInput = React.createRef();
+
+
   this.state={
     count: 0,
     target:0
   }
 
-const linearSearch = ()=>{
+const linearSearch = (values)=>{
   this.setState({})
 }
 }
@@ -22,8 +25,10 @@ const linearSearch = ()=>{
     return (
       <section className="App">
         <h1>Type Data Here</h1>
-       <input type='text' ref={this.input}></input>
-       <button type= 'button' onClick = {(e)=>console.log(this.input.current.value)}>Linear Search</button>
+        <input type='text' onChange= {(e)=>console.log(this.dataInput.current.value)} ref={this.dataInput}></input>
+        <h1>Type Target Here</h1>
+       <input type='text' ref={this.targetInput}></input>
+       <button type= 'button' onClick = {(e)=>console.log(this.targetInput.current.value)}>Linear Search</button>
        <div>It took {this.state.count} times to find {this.state.target}</div>
       </section>
     );
