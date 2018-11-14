@@ -3,24 +3,22 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+constructor(props){
+  super(props);
+  this.state={
+    count: 0,
+    target:0
+  };
+}
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <section className="App">
+        <h1>Type Data Here</h1>
+       <input type='text'></input>
+       <button type= 'button'>Linear Search</button>
+       <div>It took {this.state.count} times to find {this.state.target}</div>
+      </section>
     );
   }
 }
