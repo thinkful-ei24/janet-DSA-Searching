@@ -23,9 +23,17 @@
 }
 
 
-.linearSearch{
+section{
   border: 1px solid  black;
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+.data{
+  width: 90%;
+  marin: 0 auto;
+  height: 100px;
+  overflow-y : scroll;
+
 }
 @keyframes App-logo-spin {
   from {
