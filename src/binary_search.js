@@ -1,18 +1,30 @@
 import React from 'react';
 
-export default function BinarySearch (props){
+export default class BinarySearch extends React.Component {
+constructor(props){
+  super(props);
+  this.binaryInput = React.createRef();
+}
 
+
+// onClick = {e=>console.log(e.target.getAttribute('input'))}
+
+
+
+
+  render(){
   return(
     <section className='binarySearch'>
     <h1 >Binary Search</h1>
     <h3>can only search one number at a time</h3>
-    <input type='text'></input>
-    <button type= 'button' onClick = {props.binaryClick}>
+    <input type='text' ref={this.binaryInput}></input>
+    <button type= 'button' onClick={e=>console.log(this.binaryInput.current.value)}>
     Binary Search
     </button> 
    
-    <div>It took {props.binarycount} time(s) to find {props.binaryTarget}</div>
+    <div>It took {this.props.binarycount} time(s) to find {this.props.binaryTarget}</div>
     </section>
   );
+  }
 
 }

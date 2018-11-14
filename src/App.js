@@ -92,8 +92,9 @@ console.log(message);
 
 
          <BinarySearch
-        binarycount={this.state.binaryCount} 
-         binaryClick={e=>console.log('hello')}/>
+        // binarycount={this.state.binaryCount} 
+        // binaryClick={e=>console.log('hello')}
+        />
        
       </section>
     );
