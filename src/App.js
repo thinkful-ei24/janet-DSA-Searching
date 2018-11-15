@@ -3,6 +3,7 @@ import './App.css';
 import BinarySearch from './binary_search';
 import binarySearch from './binarySearchFunction';
 import BookSearch from './findabook';
+import TreeTraversal from './treetraversal';
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -206,6 +207,8 @@ class App extends Component {
 
 
         <BookSearch data={this.state.data}/>
+
+        <TreeTraversal/>
 			</section>
 		);
 	}

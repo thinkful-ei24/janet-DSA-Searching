@@ -48,15 +48,8 @@ handleBookClick(value){
     return <ul>{searchRes}</ul>;
   }
       
-  
-
-
-
-
-
 
 	render() {
-console.log(this.state.titleResponse);
 
 		return (
 			<section className="binarySearch">
