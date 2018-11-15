@@ -120,5 +120,36 @@ export class BinarySearchTree {
     return values;
 }
 
+
+
+dfsPostOrder(values=[]) {
+
+  if (this.left) {
+      values = this.left.dfsPostOrder(values);
+  }
+
+
+  if (this.right) {
+      values = this.right.dfsPostOrder(values);
+  }
+  values.push(this.value);
+  return values;
+}
+
+
+dfsPreOrder(values=[]) {
+  values.push(this.value);
+  if (this.left) {
+      values = this.left.dfsPreOrder(values);
+  }
+
+
+  if (this.right) {
+      values = this.right.dfsPreOrder(values);
+  }
+
+  return values;
+}
+
 }
 
